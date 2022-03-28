@@ -17,6 +17,7 @@ public static class ApplicationDbContextSeed
         }
 
         var employeeRole = new IdentityRole("Employee");
+
         if (roleManager.Roles.All(r => r.Name != employeeRole.Name))
         {
             await roleManager.CreateAsync(employeeRole);
@@ -35,19 +36,37 @@ public static class ApplicationDbContextSeed
         {
             await userManager.CreateAsync(administrator, "Administrator1!");
             await userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
-
-            await userManager.CreateAsync(Employee1, "P@ssw0rd");
-            await userManager.CreateAsync(Employee2, "P@ssw0rd");
-            await userManager.CreateAsync(Employee3, "P@ssw0rd");
-            await userManager.CreateAsync(Employee4, "P@ssw0rd");
-            await userManager.CreateAsync(Employee5, "P@ssw0rd");
-            await userManager.AddToRolesAsync(Employee1, new[] { employeeRole.Name });
-            await userManager.AddToRolesAsync(Employee2, new[] { employeeRole.Name });
-            await userManager.AddToRolesAsync(Employee3, new[] { employeeRole.Name });
-            await userManager.AddToRolesAsync(Employee4, new[] { employeeRole.Name });
-            await userManager.AddToRolesAsync(Employee5, new[] { employeeRole.Name });
-
         }
+
+        //if (userManager.Users.All(u => u.UserName != Employee1.UserName))
+        //{
+        //    await userManager.CreateAsync(Employee1, "P@ssw0rd");
+        //    await userManager.AddToRolesAsync(Employee1, new[] { employeeRole.Name });
+        //}
+
+        //if (userManager.Users.All(u => u.UserName != Employee2.UserName))
+        //{
+        //    await userManager.CreateAsync(Employee2, "P@ssw0rd");
+        //    await userManager.AddToRolesAsync(Employee2, new[] { employeeRole.Name });
+        //}
+
+        //if (userManager.Users.All(u => u.UserName != Employee3.UserName))
+        //{
+        //    await userManager.CreateAsync(Employee3, "P@ssw0rd");
+        //    await userManager.AddToRolesAsync(Employee3, new[] { employeeRole.Name });
+        //}
+
+        //if (userManager.Users.All(u => u.UserName != Employee4.UserName))
+        //{
+        //    await userManager.CreateAsync(Employee4, "P@ssw0rd");
+        //    await userManager.AddToRolesAsync(Employee4, new[] { employeeRole.Name });
+        //}
+
+        //if (userManager.Users.All(u => u.UserName != Employee5.UserName))
+        //{
+        //    await userManager.CreateAsync(Employee5, "P@ssw0rd");
+        //    await userManager.AddToRolesAsync(Employee5, new[] { employeeRole.Name });
+        //}
     }
 
     public static async Task SeedSampleDataAsync(ApplicationDbContext context)

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanArchitecture.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220328114516_updateApplicationUser")]
-    partial class updateApplicationUser
+    [Migration("20220328122259_AddSalary")]
+    partial class AddSalary
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

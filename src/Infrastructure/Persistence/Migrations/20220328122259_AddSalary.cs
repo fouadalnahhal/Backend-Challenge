@@ -4,7 +4,7 @@
 
 namespace CleanArchitecture.Infrastructure.Persistence.Migrations
 {
-    public partial class initDB : Migration
+    public partial class AddSalary : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,23 +14,12 @@ namespace CleanArchitecture.Infrastructure.Persistence.Migrations
                 type: "float",
                 nullable: false,
                 defaultValue: 0.0);
-
-            migrationBuilder.AddColumn<int>(
-                name: "Type",
-                table: "AspNetUsers",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
                 name: "Salary",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Type",
                 table: "AspNetUsers");
         }
     }

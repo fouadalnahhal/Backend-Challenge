@@ -16,12 +16,37 @@ public static class ApplicationDbContextSeed
             await roleManager.CreateAsync(administratorRole);
         }
 
+        var employeeRole = new IdentityRole("Employee");
+        if (roleManager.Roles.All(r => r.Name != employeeRole.Name))
+        {
+            await roleManager.CreateAsync(employeeRole);
+        }
+
         var administrator = new ApplicationUser { UserName = "administrator@localhost", Email = "administrator@localhost" };
+
+        var Employee1 = new ApplicationUser { UserName = "ُEmployee1@localhost", Email = "Employee1@localhost", Salary = 12000 };
+        var Employee2 = new ApplicationUser { UserName = "ُEmployee2@localhost", Email = "Employee2@localhost", Salary = 15000 };
+        var Employee3 = new ApplicationUser { UserName = "ُEmployee3@localhost", Email = "Employee3@localhost", Salary = 18000 };
+        var Employee4 = new ApplicationUser { UserName = "ُEmployee4@localhost", Email = "Employee4@localhost", Salary = 12000 };
+        var Employee5 = new ApplicationUser { UserName = "ُEmployee5@localhost", Email = "Employee5@localhost", Salary = 10000 };
+
 
         if (userManager.Users.All(u => u.UserName != administrator.UserName))
         {
             await userManager.CreateAsync(administrator, "Administrator1!");
             await userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
+
+            await userManager.CreateAsync(Employee1, "P@ssw0rd");
+            await userManager.CreateAsync(Employee2, "P@ssw0rd");
+            await userManager.CreateAsync(Employee3, "P@ssw0rd");
+            await userManager.CreateAsync(Employee4, "P@ssw0rd");
+            await userManager.CreateAsync(Employee5, "P@ssw0rd");
+            await userManager.AddToRolesAsync(Employee1, new[] { employeeRole.Name });
+            await userManager.AddToRolesAsync(Employee2, new[] { employeeRole.Name });
+            await userManager.AddToRolesAsync(Employee3, new[] { employeeRole.Name });
+            await userManager.AddToRolesAsync(Employee4, new[] { employeeRole.Name });
+            await userManager.AddToRolesAsync(Employee5, new[] { employeeRole.Name });
+
         }
     }
 
